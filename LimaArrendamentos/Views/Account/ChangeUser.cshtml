@@ -1,0 +1,108 @@
+﻿@model LimaArrendamentos.Models.ChangeUserViewModel
+@{
+    Layout = null;
+}
+
+<title>Modificar Perfil | LimArrendamentos</title>
+
+<link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="~/Login/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/Login/css/main.css">
+
+
+<div class="limiter">
+
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form-title">
+                <span class="login100-form-title-1">Modificar perfil</span>
+            </div>
+
+            <form method="post" class="login100-form validate-form" enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ProfilePic" />
+
+                <img src="@Url.Content(Model.ImageFullPath)"
+                     style="width:200px; height:200px; max-width: auto; max-height:auto; border-radius: 50%; margin: 0 0 2em 4em;">
+
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Primeiro nome</span>
+                    <input class="input100" asp-for="FirstName" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Último Nome</span>
+                    <input class="input100" asp-for="LastName" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Data de Nascimento</span>
+                    <input class="input100" asp-for="DateOfBirth" type="date">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Morada</span>
+                    <input class="input100" asp-for="Address" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Telemóvel</span>
+                    <input class="input100" asp-for="PhoneNumber" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Cartão de Cidadão</span>
+                    <input class="input100" asp-for="CCnumber" type="number">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Nº de Contribuinte</span>
+                    <input class="input100" asp-for="NIF" type="number">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Imagem</span>
+                    <input asp-for="ImageFile" class="form-control" type="file" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" value="Update" class="btn btn-primary">Atualizar</button>
+                    <a asp-action="ChangePassword" class="btn btn-warning ml-1">Mudar palavra-passe</a>
+                </div>
+
+            </form>
+
+            <div class="d-flex justify-content-center mb-1" style="margin-top: -3rem;">
+                <a asp-controller="Dashboard" asp-action="Index"
+                   class="btn btn-link">Voltar atrás</a>
+            </div>
+
+            <div class="alert-warning text-center" role="alert">@ViewBag.Message</div>
+
+        </div>
+    </div>    
+</div>
+
+<script src="~/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="~/Login/vendor/animsition/js/animsition.min.js"></script>
+<script src="~/Login/vendor/bootstrap/js/popper.js"></script>
+<script src="~/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Login/vendor/select2/select2.min.js"></script>
+<script src="~/Login/vendor/daterangepicker/moment.min.js"></script>
+<script src="~/Login/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="~/Login/vendor/countdowntime/countdowntime.js"></script>
+<script src="~/Login/js/main.js"></script>

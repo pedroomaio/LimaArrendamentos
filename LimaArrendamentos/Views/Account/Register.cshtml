@@ -1,0 +1,120 @@
+﻿@model LimaArrendamentos.Models.RegisterNewUserViewModel
+@{
+
+    Layout = null;
+}
+
+
+<title>Registar | LimArrendamentos</title>
+
+<link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="~/Login/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/Login/css/main.css">
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form-title">
+                <span class="login100-form-title-1">Registar Conta</span>
+            </div>
+
+            <form method="post" class="login100-form validate-form">
+                <div asp-validation-summary="ModelOnly"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ProfilePic" />
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Primeiro nome</span>
+                    <input class="input100" asp-for="FirstName" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Último Nome</span>
+                    <input class="input100" asp-for="LastName" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">E-mail</span>
+                    <input class="input100" asp-for="Username" type="email">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Data de Nascimento</span>
+                    <input class="input100" asp-for="DateOfBirth" type="date">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Morada</span>
+                    <input class="input100" asp-for="Address" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Telefone</span>
+                    <input class="input100" asp-for="PhoneNumber" type="text">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">Cartão de Cidadão</span>
+                    <input class="input100" asp-for="CCnumber" type="number">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+                    <span class="label-input100">NIF</span>
+                    <input class="input100" asp-for="NIF" type="number">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-26">
+
+                    <label asp-for="ProfilePic" class="control-label"></label>
+                    <input asp-for="ProfilePic" class="form-control" type="file" />
+                    <span asp-validation-for="ProfilePic" class="text-danger"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-18" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Password</span>
+                    <input class="input100" asp-for="Password" type="password">
+                    <span asp-validation-for="Password" class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-18" data-validate="Campo necessário">
+                    <span class="label-input100" style="color: orange;">Confirmar password</span>
+                    <input class="input100" asp-for="Confirm" type="password">
+                    <span asp-validation-for="Confirm" class="focus-input100"></span>
+                </div>
+
+
+                <div class="container-login100-form-btn mt-3 d-flex justify-content-center">
+                    <button type="submit" value="Register New User" class="btn btn-success w-75">Registar</button>
+                </div>
+            </form>
+
+            <div class="alert-warning text-center" role="alert" style="margin-top: -2rem;">@ViewBag.Message</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="~/Login/vendor/animsition/js/animsition.min.js"></script>
+<script src="~/Login/vendor/bootstrap/js/popper.js"></script>
+<script src="~/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Login/vendor/select2/select2.min.js"></script>
+<script src="~/Login/vendor/daterangepicker/moment.min.js"></script>
+<script src="~/Login/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="~/Login/vendor/countdowntime/countdowntime.js"></script>
+<script src="~/Login/js/main.js"></script>

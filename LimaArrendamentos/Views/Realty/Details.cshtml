@@ -1,0 +1,133 @@
+﻿@model LimaArrendamentos.Data.Entities.Realty
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="single-property-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="single-property">
+                    <div class="sp-image">
+
+                        <div class="row d-flex justify-content-center font-weight-bold"
+                             style="background-color: #ff000a; color: white; font-size: 32px;">
+                            Detalhes do Imóvel
+                        </div>
+
+                        <img src="@Url.Content(Model.ImageFullPath)" alt="Image">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="property-header">
+                                <h3>@Html.DisplayFor(model => model.AnnouncementTitle)</h3>
+                                <h5>@Html.DisplayFor(model => model.Address)</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-left text-lg-right">
+                            <div class="property-header">
+                                <h3>@Html.DisplayFor(model => model.Value)</h3>
+                                @*<p>@Html.DisplayFor(model => model.nBedrooms) Bedrooms House</p>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-text">
+                        <h4>Descrição</h4>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                    </div>
+                    
+                    <div class="property-feature">
+                        <div class="row">
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6>Tipo de propriedade</h6>
+                                    <p>@Html.DisplayFor(model => model.PropertyType)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6 class="mb-4">Tipologia</h6>
+                                    <p>@Html.DisplayFor(model => model.Typology)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6>Ano de construção</h6>
+                                    <p>@Html.DisplayFor(model => model.ConstructionYear.Year)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6>Classe Energética</h6>
+                                    <p>@Html.DisplayFor(model => model.EnergyClass)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6>Casas de banho</h6>
+                                    <p>@Html.DisplayFor(model => model.nBathrooms)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                                <div class="pf-box">
+                                    <h6 class="mb-4">Quartos</h6>
+                                    <p>@Html.DisplayFor(model => model.nBedrooms)</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-info-bar">
+                    <div class="row d-flex justify-content-center">
+
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <div class="col-lg-5 text-left text-lg-right">
+                                <a asp-action="SendEmail" asp-route-id="@Model.Id" class="offer-btn">Estou Interessado/a!</a>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="col-lg-5 text-left text-lg-right">
+                                <a asp-action="Login" asp-controller="Account" class="offer-btn">Estou Interessado/a!</a>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-md-8 sidebar">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ml-3">
+        @*<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>*@
+        <a href="javascript:history.back()" class="btn btn-link ml-1">Voltar atrás</a>
+    </div>
+
+</section>
+
+
+
+
+
+
+

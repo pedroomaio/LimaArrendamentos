@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>@ViewBag.Title | LimArrendamentos</title>
+
+    @* basic metas *@
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    @* site metas *@
+    <meta name="description" content="WebSite criado para o Projeto Final
+          do curso de Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação - CET57 2021">
+    <meta name="keywords" content="arrendamentos, procurar casa, alugar casa, cet57, cinel">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ana Catarina Lima, Miguel Ribeiro, Pedro Maio" />
+
+    @* mobile metas *@
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+
+    @* css styles *@
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    @* font styles *@
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900%7cRoboto:400,400i,500,500i,700,700i&display=swap">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:300,400,500,700">
+
+    @* libraries *@
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+
+    @* navbar section *@
+    <header class="header-section" style="margin-top: -20px; position: sticky; z-index: 1;
+            background-color: #22242b; box-shadow: 0 0 10px 0;">
+
+        <div class="container">
+
+            <nav class="navbar navbar-expand-lg navbar-dark text-uppercase" style="background-color: #22242b;">
+
+                <a class="nav navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo.png" width="35" height="35" alt="logo" />
+                    <span>LimArrendamentos</span>
+                </a>
+
+                <button class="navbar-toggler fas fa-grip-lines" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                </button>
+
+                <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home"
+                               asp-action="Index" asp-fragment="searchSection">Procurar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home"
+                               asp-action="Index" asp-fragment="aboutSection">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home"
+                               asp-action="Index" asp-fragment="contactsSection">Contactos</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Realty" asp-action="Index1">Anúncios</a></li>
+
+
+
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold" asp-controller="Dashboard" asp-action="Index"
+                                   style="color: white;">Painel de Controlo</a>
+                            </li>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold" asp-controller="Account" asp-action="Logout"
+                                   style="color: white;">Sair</a>
+                            </li>
+
+
+                        }
+                        else
+                        {
+                            <li class="nav-item" style="margin-left: 10px; margin-right: -20px;">
+                                <a class="nav-link font-weight-bold" asp-controller="Account" asp-action="Login"
+                                   style="color: white;">Entrar</a>
+                            </li>
+                            <li class="nav-item" style="margin-left: 10px;">
+                                <a class="nav-link font-weight-bold" asp-controller="Account" asp-action="Register"
+                                   style="color: white;">Registar</a>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container mt-5 min-vh-100">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    @* footer section *@
+    <footer class="footer-section pt-4 mt-5 position-relative">
+        <div class="copyright text-center">
+            &copy; @DateTime.Now.Year TODOS OS DIREITOS RESERVADOS | ANA CATARINA LIMA - MIGUEL RIBEIRO<br />
+            CET57 - PROJETO DE TECNOLOGIAS E PROGRAMAÇÃO DE SISTEMAS DE INFORMAÇÃO | Prof. ANTÓNIO PACHECO - Prof. JOÃO GALAMBA - Prof. RAFAEL SANTOS - Profª. SUSANA PIMENTEL
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/main.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.slicknav.min.js"></script>
+
+
+@await RenderSectionAsync("scripts", required: false)

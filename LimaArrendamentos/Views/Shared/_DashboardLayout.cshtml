@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>@ViewBag.Title | LimArrendamentos</title>
+
+    @* basic metas *@
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    @* site metas *@
+    <meta name="description" content="WebSite criado para o Projeto Final
+          do curso de Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação - CET57 2021">
+    <meta name="keywords" content="arrendamentos, procurar casa, alugar casa, cet57, cinel">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ana Catarina Lima, Miguel Ribeiro, Pedro Maio" />
+
+
+    @* mobile metas *@
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+
+    @* bootstrap css *@
+    <link rel="stylesheet" href="~/Dashboard/assets/plugins/bootstrap/css/bootstrap.min.css" />
+
+    @* plugins css *@
+    <link rel="stylesheet" href="~/Dashboard/assets/plugins/charts-c3/c3.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+
+    @* core css *@
+    <link rel="stylesheet" href="~/Dashboard/assets/css/main.css" />
+    <link rel="stylesheet" href="~/Dashboard/assets/css/theme1.css" />
+
+</head>
+
+<body>
+
+    <div class="page-loader-wrapper">
+        <div class="loader">
+        </div>
+    </div>
+
+    <div id="left-sidebar" class="sidebar">     
+        <a asp-controller="Home" asp-action="Index">
+            <img style="width: 60%" src="~/img/logo.png" class="ml-3 mt-3"/>
+            <h5 class="brand-name text-dark">LimArrendamentos</h5>
+        </a>
+
+        <hr />
+
+        <nav id="left-sidebar-nav" class="sidebar-nav">
+
+            <ul class="metismenu">
+                <li class="g_heading" style="font-size: 14px;">
+                    <a asp-controller="Dashboard"
+                       class="sidebar-link waves-effect waves-dark"
+                       aria-expanded="false">Página Principal</a>
+                </li>
+
+                @* if user is admin *@
+                @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                {
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Users" asp-action="Index"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Clientes
+                        </a>
+                    </li>
+
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Users" asp-action="Staff"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Funcionários
+                        </a>
+                    </li>
+
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Realty" asp-action="Index"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Imóveis
+                        </a>
+                    </li>
+
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Home" asp-action="Index"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Contratos
+                        </a>
+                    </li>
+
+                }
+
+                @* if user is client *@
+                @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Cliente"))
+                {
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Realty" asp-action="Create"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Novo Anúncio
+                        </a>
+                    </li>
+
+
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Realty" asp-action="Index"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Os Meus Imóveis
+                        </a>
+                    </li>
+
+                    <li class="g_heading" style="font-size: 14px;">
+                        <a asp-controller="Home" asp-action="Index"
+                           class="sidebar-link waves-effect waves-dark"
+                           aria-expanded="false">
+                            Favoritos
+                        </a>
+                    </li>
+                }
+
+                <li class="g_heading mt-5" style="font-size: 14px;">
+                    <a asp-controller="Account" asp-action="ChangeUser"
+                       class="sidebar-link waves-effect waves-dark"
+                       aria-expanded="false">Modificar Perfil</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="page">
+        <div id="page_top" class="section-body" style="background-color: #22242b;">
+            <div class="container-fluid">
+
+                <div class="page-header border-bottom-0">
+                    <div class="left">
+                        <h5 class="text-white" style="padding: 10px 0 10px 0;">Painel de Controlo</h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+        @* dashboard content *@
+        <div class="container mt-5">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+
+        </div>
+
+    </div>
+
+    @* scripts section *@
+    <script src="~/Dashboard/assets/bundles/lib.vendor.bundle.js"></script>
+    <script src="~/Dashboard/assets/bundles/apexcharts.bundle.js"></script>
+    <script src="~/Dashboard/assets/bundles/counterup.bundle.js"></script>
+    <script src="~/Dashboard/assets/bundles/knobjs.bundle.js"></script>
+    <script src="~/Dashboard/assets/bundles/c3.bundle.js"></script>
+    <script src="~/Dashboard/assets/js/core.js"></script>
+    <script src="~/Dashboard/assets/js/page/project-index.js"></script>
+
+    @* support button *@
+    <script>
+        (function () {
+            var options = {
+                email: "limarrendamentos@gmail.com", // Email
+                call_to_action: "Precisa de ajuda?", // Call to action
+                position: "right", // Position may be 'right' or 'left'
+            };
+            var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+
+</body>
+</html>

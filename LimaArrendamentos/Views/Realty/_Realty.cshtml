@@ -1,0 +1,218 @@
+﻿
+@model LimaArrendamentos.Models.RealtyViewModel
+
+<div class="form-group">
+    <label asp-for="AnnouncementTitle" class="control-label"></label>
+    <input asp-for="AnnouncementTitle" type="text" class="form-control">
+    <span asp-validation-for="AnnouncementTitle" class="text-danger"></span>
+</div>
+
+<br />
+<br />
+<h4>Informações sobre o imóvel</h4>
+<hr />
+
+<div class="row">
+
+    <div class="col-auto">
+        <div class="form-group">
+
+            <label asp-for="ImageFile" class="control-label"></label>
+            <input asp-for="ImageFile" class="form-control" type="file" />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TypologyId" class="control-label"></label>
+            <select asp-for="TypologyId" asp-items="Model.Typologies" class="form-control"></select>
+            <span asp-validation-for="TypologyId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" type="text" id="example" onkeypress="myFunction()" class="form-control">
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Area" class="control-label"></label>
+            <input asp-for="Area" type="number" class="form-control" />
+            <span asp-validation-for="Area" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EnergyClassId" class="control-label"></label>
+            <select asp-for="EnergyClassId" asp-items="Model.EnergiesClass" class="form-control"></select>
+            <span asp-validation-for="EnergyClassId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PropertyTypeId" class="control-label"></label>
+            <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes" class="form-control"></select>
+            <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
+        </div>
+
+
+    </div>
+
+    <div class="col-auto">
+
+        <div class="form-group">
+            <label asp-for="nBathrooms" class="control-label"></label>
+            <input asp-for="nBathrooms" type="number" class="form-control" />
+            <span asp-validation-for="nBathrooms" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="nBedrooms" class="control-label"></label>
+            <input asp-for="nBedrooms" type="number" class="form-control" />
+            <span asp-validation-for="nBedrooms" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="ConstructionYear" class="control-label"></label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="date" value="01/01/2021"
+                       asp-for="ConstructionYear" class="form-control">
+                <span asp-validation-for="ConstructionYear" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Value" class="control-label"></label>
+            <input class="form-control" asp-for="Value" type="number">
+            <span asp-validation-for="Value" class="text-danger"></span>
+        </div>
+
+
+    </div>
+
+    <div class="col-auto">
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <div class="align-content-start">
+                <textarea asp-for="Description" rows="10" cols="30"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="form-group">
+    <label class="control-label">Caução</label>
+    Sim <input type="radio" onclick="javascript:yesnoCheck();" value="Yes" name="yesno" id="yesCheck"> Não
+    <input type="radio" onclick="javascript:yesnoCheck();" value="No" checked="checked" name="yesno" id="noCheck">
+    <br>
+    <div id="ifYes" style="display:none">
+
+        <label asp-for="Deposit" class="control-label"></label>
+        <input class="form-control" asp-for="Deposit" type="number">
+        <span asp-validation-for="Deposit" class="text-danger"></span>
+    </div>
+</div>
+
+<hr class="mt-5" />
+
+
+@*<br />
+    <br />
+    <h4>Adicionar Multimédia</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" type="number" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br />
+    <br />
+    <h4>Localização</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" type="number" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>*@
+
+
+
+
+
+@*<script>
+        $(document).ready(function () {
+            $("#@Model.ModelId").change(function () {
+                alert("qwe");
+                $("#BrandId").empty();
+                $.ajax({
+                    url: '@Url.Action("GetBrandsAsync","Inspecion")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { modelId: $("#ModelId").val()},
+                    success: function (brands) {
+                        debugger;
+                        $("#BrandId").append('<option value="0">(Select a brand...)</option>');
+                        $.each(brands, function (i, brand) {
+                            $("#BrandId").append('<option value="'
+                                + brand.id + '">'
+                                + brand.name + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        debugger;
+                        alert('Failed to retrieve brands.' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+
+    </script>*@
+<script>
+    var currencyInput = document.querySelectorAll('input[type="currency"]');
+
+    for (var i = 0; i < currencyInput.length; i++) {
+
+        var currency = 'EUR'
+        onBlur({
+            target: currencyInput[i]
+        })
+
+        currencyInput[i].addEventListener('focus', onFocus)
+        currencyInput[i].addEventListener('blur', onBlur)
+
+        function localStringToNumber(s) {
+            return Number(String(s).replace(/[^0-9.-]+/g, ""))
+        }
+
+        function onFocus(e) {
+            var value = e.target.value;
+            e.target.value = value ? localStringToNumber(value) : ''
+        }
+
+        function onBlur(e) {
+            var value = e.target.value
+
+            var options = {
+                maximumFractionDigits: 2,
+                currency: currency,
+                style: "currency",
+                currencyDisplay: "symbol"
+            }
+
+            e.target.value = (value || value === 0) ?
+                localStringToNumber(value).toLocaleString(undefined, options) :
+                ''
+        }
+    }
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.display = 'block';
+        }
+        else document.getElementById('ifYes').style.display = 'none';
+
+    }
+
+</script>

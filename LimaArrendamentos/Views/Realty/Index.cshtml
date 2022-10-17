@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LimaArrendamentos.Data.Entities.Realty>
+
+@{
+    ViewData["Title"] = "Painel de Controlo";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Clientes</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped text-nowrap table-vcenter mb-0">
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Utilizador</th>
+                                        <th>Título Anúncio</th>
+                                        <th>Descrição</th>
+                                        <th>Preço</th>
+                                        <th>Tipo de Imóvel</th>
+                                        <th>Tipologia</th>
+                                        <th>Ano de construção</th>
+                                        <th>Classe energética</th>
+                                        <th>Casas de banho</th>
+                                        <th>Quartos</th>
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                    <tr>
+
+                                        <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AnnouncementTitle)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Value)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PropertyType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Typology)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EnergyClass)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.nBathrooms)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.nBedrooms)</td>
+
+
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Ir para anúncio</a>
+                                            @*<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>*@
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                        </td>
+
+                                    </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

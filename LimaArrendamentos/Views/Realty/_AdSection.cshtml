@@ -1,0 +1,20 @@
+﻿@model LimaArrendamentos.Models.AdvertViewModel 
+
+@* partial view to display ads *@
+
+<div class="container">
+    
+
+    <p style="font-size: 8px;">@Html.DisplayFor(model => model.Title)</p>
+
+    <div class="row w-100">
+
+        <a href="@Html.DisplayFor(model => model.Url)">
+
+            <img src="@Html.DisplayFor(model => model.Image)" />
+
+        </a>
+
+    </div>
+
+</div>
